@@ -10,7 +10,10 @@ function echo-run-cmd {
 ##############################################################################
 function viless {
   # e.g. "grep something somefile | viless"
-  vi -R -
+  # vi -R -
+  # This works for VS Code terminals in a dev container, but not for terminals
+  # in a remote SSH connection.
+  $EDITOR -
 }
 function vi-noplugins {
   vi --noplugin $@
@@ -59,12 +62,10 @@ function git-log-online {
   git log --format=oneline
 }
 function git-diff-unstaged {
-  #git diff $@ | vi -R -
   git diff $@ > git.diff
   $EDITOR git.diff
 }
 function git-diff-staged {
-  #git diff --cached $@ | vi -R -
   git diff --cached $@ > git.diff
   $EDITOR git.diff
 }
@@ -91,11 +92,8 @@ function git-branch-diagram {
   git log --graph --oneline --all
 }
 function git-show-latest-commit {
-  #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show
-  #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | viless
-  #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | vi -c "WhitespaceHighlight off" -R -
-  #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | vi -c -R -
-  git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | $EDITOR
+  git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show > git.log
+  $EDITOR git.log
 }
 function git-cherry-pick-interactive {
   # http://stackoverflow.com/a/1526093/1230197

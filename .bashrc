@@ -121,6 +121,7 @@ fi
 
 if [ $(which vim) ]; then
   export EDITOR=vim
+  alias vi="$(which vim)"
 else
   export EDITOR=vi
 fi

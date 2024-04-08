@@ -1,8 +1,6 @@
 # Aliases: use an alias as a kind of shortcut: when you always want to
 # substitute some extended command for a simple existing command.
 # New commands should be added using shell functions, below.
-alias vi='/usr/bin/vim'
-
 function echo-run-cmd {
   CMD="$@"
   echo $CMD
@@ -15,7 +13,7 @@ function viless {
   vi -R -
 }
 function vi-noplugins {
-  vim --noplugin $@
+  vi --noplugin $@
 }
 function rsync-pdfpng {
   rsync -avzr --include="*/" --include="*.pdf" --include="*.png" \

@@ -53,7 +53,7 @@ function git-status-hide-untracked {
 }
 function git-log {
   git log $@ > git.log
-  vi git.log
+  $EDITOR git.log
 }
 function git-log-online {
   git log --format=oneline
@@ -61,25 +61,25 @@ function git-log-online {
 function git-diff-unstaged {
   #git diff $@ | vi -R -
   git diff $@ > git.diff
-  vi git.diff
+  $EDITOR git.diff
 }
 function git-diff-staged {
   #git diff --cached $@ | vi -R -
   git diff --cached $@ > git.diff
-  vi git.diff
+  $EDITOR git.diff
 }
 function git-diff-notpushed {
   git diff @{upstream}.. $@ > git.diff
-  vi git.diff
+  $EDITOR git.diff
 }
 function git-diff-from-master {
   git diff master.. > git.diff
-  vi git.diff
+  $EDITOR git.diff
 }
 function git-log-notpushed {
   # http://stackoverflow.com/questions/2016901/viewing-unpushed-git-commits
   git log @{upstream}.. $@ > git.log
-  vi git.log
+  $EDITOR git.log
 }
 function git-unstage-all {
   echo-run-cmd 'git restore --staged .'
@@ -94,7 +94,8 @@ function git-show-latest-commit {
   #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show
   #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | viless
   #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | vi -c "WhitespaceHighlight off" -R -
-  git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | vi -c -R -
+  #git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | vi -c -R -
+  git log -n 1 | head -n 1 | awk '{print $2}' | xargs git show | $EDITOR
 }
 function git-cherry-pick-interactive {
   # http://stackoverflow.com/a/1526093/1230197

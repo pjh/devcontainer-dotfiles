@@ -119,12 +119,13 @@ fi
 
 # These should probably come after aliases:
 
-if [ $(which vim) ]; then
-  export EDITOR=vim
-  alias vi="$(which vim)"
-else
-  export EDITOR=vi
-fi
+EDITOR="code -r"
+#if [ $(which vim) ]; then
+#  export EDITOR=vim
+#  alias vi="$(which vim)"
+#else
+#  export EDITOR=vi
+#fi
 
 # Disable tab completion for remote branches
 # https://stackoverflow.com/a/43747486/1230197

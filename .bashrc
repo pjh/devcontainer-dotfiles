@@ -118,7 +118,12 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # These should probably come after aliases:
-export EDITOR=vim
+
+if [ $(which vim) ]; then
+  export EDITOR=vim
+else
+  export EDITOR=vi
+fi
 
 # Disable tab completion for remote branches
 # https://stackoverflow.com/a/43747486/1230197

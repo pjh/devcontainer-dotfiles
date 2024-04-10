@@ -51,6 +51,25 @@ function start-ssh-agent-and-save-password {
 function gt {
   git town $@
 }
+function gt-help {
+  echo "gt hack <new branch name>"
+  echo "gt propose"
+  echo "gt append <child branch name>"
+  echo "gt sync"
+  echo "gt switch"
+  echo "gt undo - undo most recent command"
+  echo "gt set-parent"
+  echo "gt kill - delete current or specified branch"
+}
+function git-town-help {
+  gt-help
+}
+function gt-append-fix {
+  echo-run-cmd "git restore --staged $@"
+}
+function gt-fix-append {
+  gt-append-fix $@
+}
 function git-status-hide-untracked {
   git status --untracked-files=no
 }

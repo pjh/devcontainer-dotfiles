@@ -59,16 +59,20 @@ function gt-help {
   echo "gt switch"
   echo "gt undo - undo most recent command"
   echo "gt set-parent"
+  echo "gt diff-parent"
   echo "gt kill - delete current or specified branch"
 }
 function git-town-help {
   gt-help
 }
-function gt-append-fix {
+function gt-fix {
   echo-run-cmd "git restore --staged $@"
 }
-function gt-fix-append {
-  gt-append-fix $@
+function gt-append-fix {
+  gt-fix $@
+}
+function gt-diff-parent {
+  echo-run-cmd "gt diff-parent $@"
 }
 function git-status-hide-untracked {
   git status --untracked-files=no

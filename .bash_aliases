@@ -72,7 +72,8 @@ function gt-append-fix {
   gt-fix $@
 }
 function gt-diff-parent {
-  echo-run-cmd "gt diff-parent $@"
+  echo-run-cmd "gt diff-parent $@ > git.diff"
+  $EDITOR git.diff
 }
 function git-status-hide-untracked {
   git status --untracked-files=no

@@ -116,6 +116,10 @@ export PROMPT_DIRTRIM=4
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+# https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
 
 # These should probably come after aliases:
 
